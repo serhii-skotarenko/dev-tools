@@ -1,0 +1,16 @@
+version: "3.8"
+
+services:
+  postgres-backup:
+    container_name: pg-dumper
+    build:
+      context: .
+      dockerfile: pg_dump.Dockerfile
+    environment:
+      - POSTGRES_HOST=replace_with_your_host
+      - POSTGRES_PORT=replace_with_your_port
+      - POSTGRES_DB=replace_with_your_db
+      - POSTGRES_USER=replace_with_your_user
+      - POSTGRES_PASSWORD=replace_with_your_password
+    volumes:
+      - $HOME/backups:/backups
